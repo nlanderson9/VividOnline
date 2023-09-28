@@ -5,6 +5,7 @@
     <script src="jspsych/jspsych.js"></script>
     <script src="jspsych/plugin-html-keyboard-response.js"></script>
     <script src="jquery-3.7.1.min.js"></script>
+    <script src="jquery-csv.js"></script>
     <link href="jspsych/jspsych.css" rel="stylesheet" type="text/css" />
   </head>
   <body></body>
@@ -26,6 +27,8 @@
           })
 
     console.log(data)
+    csv_data = $.csv.toObject(data)
+    console_log(csv_data)
 
     var jsPsych = initJsPsych();
 
