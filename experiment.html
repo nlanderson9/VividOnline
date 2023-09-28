@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My experiment</title>
+    <script src="jspsych/jspsych.js"></script>
+    <script src="jspsych/plugin-html-keyboard-response.js"></script>
+    <script src="jquery-3.7.1.min.js"></script>
+    <link href="jspsych/jspsych.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body></body>
+  <script>
+
+
+    test = $.ajax({
+            type: "GET",
+            url: "stimuli.csv",
+            dataType: "text"
+          })
+
+    console.log(test)
+
+    var jsPsych = initJsPsych();
+
+    const hello_trial = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: 'Hello world!'
+    }
+
+    jsPsych.run([hello_trial]);
+  </script>
+</html>
