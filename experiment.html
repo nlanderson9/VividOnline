@@ -5,6 +5,10 @@
     <script src="jspsych/jspsych.js"></script>
     <script src="jspsych/plugin-html-keyboard-response.js"></script>
     <script src="jquery-3.7.1.min.js"></script>
+    <script src="jquery.csv.js"></script>
+    <script type="module">
+      import { parse } from 'csv_index.js'
+    </script>
     <link href="jspsych/jspsych.css" rel="stylesheet" type="text/css" />
   </head>
   <body></body>
@@ -23,6 +27,9 @@
           })
 
     console.log(data)
+    var csv_data = $.csv.toObjects(data);
+    console.log(csv_data)
+
 
     var jsPsych = initJsPsych();
 
