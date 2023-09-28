@@ -14,10 +14,7 @@
     test = $.ajax({
             type: "GET",
             url: "stimuli.csv",
-            dataType: "text",
-            success: function(data) {
-              return data.responseText
-            }
+            dataType: "text"
           })
 
     console.log(test)
