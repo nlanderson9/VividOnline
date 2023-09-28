@@ -14,10 +14,13 @@
     test = $.ajax({
             type: "GET",
             url: "stimuli.csv",
-            dataType: "text"
+            dataType: "text",
+            success: function(data) {
+              return data.responseText
+            }
           })
 
-    console.log(test.responseText)
+    console.log(test)
 
     var jsPsych = initJsPsych();
 
