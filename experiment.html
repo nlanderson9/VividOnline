@@ -93,10 +93,10 @@
     var question = {
       type: jsPsychSurveyLikert,
       preamble: function() {
-        return `<div style="font-size:60px;">${jsPsych.timelineVariable('stimulus')}</div>`
+        return `<br><br><div style="font-size:60px;">${jsPsych.timelineVariable('stimulus')}</div>`
       },
       questions: probe_questions,
-      scale_width: 1000,
+      scale_width: 500,
       data: {
         task: 'questions',
         condition: jsPsych.timelineVariable('condition')
