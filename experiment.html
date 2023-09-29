@@ -90,6 +90,8 @@
       type: jsPsychSurveyLikert,
       preamble: jsPsych.timelineVariable('stimulus'),
       questions: probe_questions,
+      choices: "NO_KEYS",
+      trial_duration: 7000,
       data: {
         task: 'questions',
         condition: jsPsych.timelineVariable('condition')
