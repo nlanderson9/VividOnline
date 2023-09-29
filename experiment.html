@@ -32,6 +32,7 @@
     console.log(csv_data);
 
     var test_stimuli = csv_data.slice(0,4);
+    test_stimuli.forEach((object, i) => object.trial_number = i + 1);
 
 
     var req = false;
@@ -65,7 +66,9 @@
       trial_duration: imagine_time,
       data: {
         task: 'imagine',
-        condition: jsPsych.timelineVariable('condition')
+        prompt: jsPsych.timelineVariable('stimulus'),
+        condition: jsPsych.timelineVariable('condition'),
+        trial_number: jsPsych.timelineVariable('trial_number')
       }
     };
 
@@ -103,7 +106,9 @@
       scale_width: 500,
       data: {
         task: 'questions',
-        condition: jsPsych.timelineVariable('condition')
+        prompt: jsPsych.timelineVariable('stimulus'),
+        condition: jsPsych.timelineVariable('condition'),
+        trial_number: jsPsych.timelineVariable('trial_number')
       }
     };
 
