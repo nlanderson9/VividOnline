@@ -55,7 +55,9 @@
     /* define imagine and question trials */
     var imagine = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: `<div style="font-size:60px;">$(jsPsych.timelineVariable('stimulus'))</div>`,
+      stimulus: function() {
+        return `<div style="font-size:60px;">$(jsPsych.timelineVariable('stimulus'))</div>`
+      },
       choices: "NO_KEYS",
       trial_duration: 7000,
       data: {
@@ -90,7 +92,9 @@
 
     var question = {
       type: jsPsychSurveyLikert,
-      preamble: `<div style="font-size:60px;">$(jsPsych.timelineVariable('stimulus'))</div>`,
+      preamble: function() {
+        return `<div style="font-size:60px;">$(jsPsych.timelineVariable('stimulus'))</div>`
+      },
       questions: probe_questions,
       data: {
         task: 'questions',
