@@ -62,15 +62,34 @@
       }
     };
 
-    var likert_labels = ['Strongly Disagree', '', 'Disagree', '', 'Neutral', '', 'Agree', '', 'Strongly Agree']
+
+    var vividness_labels = ['Nothing', 'Vague', 'Moderate', 'Vivid'];
+    var probe_labels = ['Strongly Disagree', '', 'Disagree', '', 'Neutral', '', 'Agree', '', 'Strongly Agree'];
+
+    var probe_questions = [
+      {prompt: "How vividly did you imagine mental images?", name: "visual_vividness", labels: vividness_labels},
+      {prompt: "How vividly did you imagine mental sounds?", name: "auditory_vividness", labels: vividness_labels},
+      {prompt: "I envisioned the location of objects, people, or places", name: "locations", labels: probe_labels},
+      {prompt: "I felt immersed in my thoughts, as if I was experiencing the item(s) in real life", name: "immersion", labels: probe_labels},
+      {prompt: "I imagined a sequence of events unfolding in my mind", name: "sequence", labels: probe_labels},
+      {prompt: "My thoughts included elaboration and detail beyond what the prompt included", name: "elaboration", labels: probe_labels},
+      {prompt: "My thoughts involved speech or written language", name: "speech_lang", labels: probe_labels},
+      {prompt: "My thoughts included my internal voice or 'inner speech'", name: "internal_voice", labels: probe_labels},
+      {prompt: "My thoughts included specific, identifiable words or phrases", name: "specific_words", labels: probe_labels},
+      {prompt: "I thought about other people", name: "other_people", labels: probe_labels},
+      {prompt: "I thought about an event from my past or in the future", name: "past_future", labels: probe_labels},
+      {prompt: "I thought about feelings, preferences, or emotions", name: "feelings", labels: probe_labels},
+      {prompt: "I thought about abstract concepts, such as truth, beauty, or fairness", name: "abstract", labels: probe_labels},
+      {prompt: "My mind wandered and I was not focused when imagining this", name: "mind_wandering", labels: probe_labels},
+      {prompt: "I found it difficult to imagine this item", name: "difficult", labels: probe_labels},
+      {prompt: "I was able to imagine what was asked successfully", name: "success", labels: probe_labels},
+      {prompt: "To imagine this, I drew on a memory of a specific fact, place, person, or object", name: "specific_memory", labels: probe_labels}
+    ]
 
     var question = {
       type: jsPsychSurveyLikert,
       preamble: jsPsych.timelineVariable('stimulus'),
-      questions: [
-        {prompt: "locations?", name:"locations", labels: likert_labels},
-        {prompt: "language?", name:"language", labels: likert_labels},
-      ],
+      questions: probe_questions,
       data: {
         task: 'questions',
         condition: jsPsych.timelineVariable('condition')
