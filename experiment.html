@@ -11,7 +11,7 @@
   <body></body>
   <script>
 
-    var data = ""
+    var data = "";
 
     test = $.ajax({
             type: "GET",
@@ -24,19 +24,58 @@
             error: function(r) {
               console.log(r)
             }
-          })
+          });
 
-    console.log(data)
-    csv_data = $.csv.toObjects(data)
-    console.log(csv_data)
+    console.log(data);
+    var csv_data = $.csv.toObjects(data);
+    console.log(csv_data);
+
+    var test_stimuli = csv_data.slice(0,4);
+
+
+
+
 
     var jsPsych = initJsPsych();
+    timeline = [];
 
-    const hello_trial = {
+
+    /* define welcome message trial */
+    var welcome = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: ''
-    }
+      stimulus: "Welcome to the experiment. Press any key to begin."
+    };
+    timeline.push(welcome);
 
-    jsPsych.run([hello_trial]);
+    /* define imagine and question trials */
+    var imagine = {
+      type: jsPsychImageKeyboardResponse,
+      stimulus: jsPsych.timelineVariable('stimulus'),
+      data: {
+        task: 'imagine',
+        condition: jsPsych.timelineVariable('condition')
+      }
+    };
+
+    var question = {
+      type: jsPsychHtmlSliderResponse,
+      stimulus: jsPsych.timelineVariable('stimulus'),
+      require_movement: true,
+      labels: ['Strongly Disagree', '', 'Disagree', '', 'Neutral', '', 'Agree', '', 'Strongly Agree'],
+      data: {
+        task: 'questions',
+        condition: jsPsych.timelineVariable('condition')
+      }
+    };
+
+    /* define test procedure */
+    var test_procedure = {
+      timeline: [imagine, question],
+      timeline_variables: test_stimuli
+    };
+    timeline.push(test_procedure);
+
+
+    jsPsych.run(timeline);
   </script>
 </html>
