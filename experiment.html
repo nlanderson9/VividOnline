@@ -37,7 +37,11 @@
 
 
 
-    var jsPsych = initJsPsych();
+    var jsPsych = initJsPsych({
+      on_finish: function() {
+        jsPsych.data.displayData();
+      }
+    })
     timeline = [];
 
 
@@ -58,11 +62,15 @@
       }
     };
 
+    var likert_labels = ['Strongly Disagree', '', 'Disagree', '', 'Neutral', '', 'Agree', '', 'Strongly Agree']
+
     var question = {
-      type: jsPsychHtmlSliderResponse,
-      stimulus: jsPsych.timelineVariable('stimulus'),
-      require_movement: true,
-      labels: ['Strongly Disagree', '', 'Disagree', '', 'Neutral', '', 'Agree', '', 'Strongly Agree'],
+      type: jsPsychSurveyLikert,
+      preamble: jsPsych.timelineVariable('stimulus'),
+      questions: [
+        {prompt: "locations?", name:"locations", labels: likert_labels},
+        {prompt: "language?", name:"language", labels: likert_labels},
+      ],
       data: {
         task: 'questions',
         condition: jsPsych.timelineVariable('condition')
