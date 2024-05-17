@@ -138,6 +138,10 @@
           use_probes = probe_questions
         }
         if (attention_check_status == "1") {
+          console.log("original questions")
+          console.log(probe_questions)
+          console.log("attention_question")
+          console.log(attention_questions1)
           use_probes = probe_questions.splice(5,0,attention_questions1)
           console.log(use_probes)
         }
