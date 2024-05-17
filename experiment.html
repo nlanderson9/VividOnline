@@ -122,20 +122,7 @@
     var attention_questions1 = {prompt: "As an attention check, please select 'Strongly Disagree'", name: "attention_check1", labels: probe_labels, required: req};
     var attention_questions2 = {prompt: "As an attention check, please select 'Neutral'", name: "attention_check2", labels: probe_labels, required: req};
 
-    function make_probe_questions() {
-      attention_check_status = jsPsych.timelineVariable('attention_check')
-      console.log(attention_check_status)
-      if (attention_check_status == 0) {
-        use_probes = probe_questions
-      }
-      if (attention_check_status == 1) {
-        use_probes = probe.questions.splice(5,0,attention_questions1)
-      }
-      if (attention_check_status == 2) {
-        use_probes = probe.questions.splice(14,0,attention_questions2)
-      }
-      return use_probes
-    }
+
 
     var question = {
       type: jsPsychSurveyLikert,
@@ -144,8 +131,20 @@
         console.log(jsPsych.timelineVariable('stimulus'))
         return `<br><br><div style="font-size:60px;">${jsPsych.timelineVariable('stimulus')}</div>`
       },
-      // questions: make_probe_questions(),
-      questions: probe_questions,
+      questions: function () {
+        attention_check_status = jsPsych.timelineVariable('attention_check')
+        console.log(attention_check_status)
+        if (attention_check_status == "0") {
+          use_probes = probe_questions
+        }
+        if (attention_check_status == "1") {
+          use_probes = probe.questions.splice(5,0,attention_questions1)
+        }
+        if (attention_check_status == "2") {
+          use_probes = probe.questions.splice(14,0,attention_questions2)
+        }
+        return use_probes
+      },
       scale_width: 500,
       data: {
         task: 'questions',
