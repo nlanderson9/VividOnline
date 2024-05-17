@@ -134,19 +134,17 @@
       questions: function () {
         attention_check_status = jsPsych.timelineVariable('attention_check')
         console.log(attention_check_status)
-        if (attention_check_status == "0") {
-          use_probes = probe_questions
-        }
+        use_probes = probe_questions
         if (attention_check_status == "1") {
           console.log("original questions")
           console.log(probe_questions)
           console.log("attention_question")
           console.log(attention_questions1)
-          use_probes = probe_questions.splice(5,0,attention_questions1)
+          use_probes.splice(5,0,attention_questions1)
           console.log(use_probes)
         }
         if (attention_check_status == "2") {
-          use_probes = probe_questions.splice(14,0,attention_questions2)
+          use_probes.splice(14,0,attention_questions2)
           console.log(use_probes)
         }
         return use_probes
