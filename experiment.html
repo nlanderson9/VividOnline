@@ -124,6 +124,7 @@
 
     function make_probe_questions() {
       attention_check_status = jsPsych.timelineVariable('attention_check')
+      console.log(attention_check_status)
       if (attention_check_status == 0) {
         use_probes = probe_questions
       }
