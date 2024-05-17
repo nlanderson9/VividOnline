@@ -17,7 +17,7 @@
 
     test = $.ajax({
             type: "GET",
-            url: "stimuli.csv",
+            url: "stimuli_BNI.csv",
             dataType: "text",
             async: false,
             success: function(r) {
@@ -192,6 +192,7 @@
     
     async function createExperiment(){
                     const condition = await jsPsychPipe.getCondition("zM4MjmVtRXlb");
+                    console.log(condition)
                     if(condition == 0) { timeline = timeline0; }
                     if(condition == 1) { timeline = timeline1; }
                     if(condition == 2) { timeline = timeline2; }
