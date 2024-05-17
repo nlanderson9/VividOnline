@@ -56,8 +56,12 @@
     var req = false;
     var imagine_time = 5000;
 
-    
-    const subject_id = "testingProlificID";
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    const subject_id = "testingProlificID" + getRandomInt(10000,99999);
     const filename = `${subject_id}.csv`;
             
 
