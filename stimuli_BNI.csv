@@ -1,73 +1,73 @@
-﻿category,condition,stimulus
-Scene,Imagery,Imagine a nature trail in the summer
-Scene,Memory,Remember your bedroom
-Face,Imagery,Imagine a girl with braces
-Face,Memory,Remember a celebrity's face
-Speech,Imagery,Imagine reciting names of US presidents
-Speech,Memory,Remember your parent's voice
-Face,Imagery,Imagine a clown's face
-Scene,Memory,Remember your work place
-Face,Memory,Remember your grandparent's face
-Speech,Memory,Remember a close friend's voice
-Speech,Imagery,Imagine reciting the alphabet
-Scene,Imagery,Imagine a city skyline
-Face,Memory,Remember your face as it looked this morning
-Speech,Memory,Remember a famous celebrity's voice
-Scene,Imagery,Imagine a college campus
-Scene,Memory,Remember a park that you like 
-Speech,Imagery,Imagine reciting the days of the week
-Face,Imagery,Imagine drawing a face with a pencil
-Face,Memory,Remember your face as it looks now
-Speech,Imagery,Imagine reciting colors of the rainbow
-Scene,Memory,Remember the outside of the hospital
-Face,Imagery,Imagine a woman who is smiling
-Speech,Memory,Remember your cousin's voice
-Scene,Imagery,Imagine a mountain range
-Scene,Memory,Remember your kitchen
-Speech,Imagery,Imagine counting up from 5
-Face,Imagery,Imagine a face wearing makeup
-Scene,Imagery,Imagine a busy shopping mall
-Speech,Memory,Remember your former classmate's voice
-Face,Memory,Remember your former teacher's face
-Face,Imagery,Imagine a bearded face
-Scene,Imagery,Imagine a movie theater
-Face,Memory,Remember a close friend's face
-Speech,Imagery,Imagine names of schools you've attended
-Speech,Memory,Remember your nurse's voice
-Scene,Memory,Remember your current neighborhood
-Speech,Imagery,Imagine reciting your street address
-Face,Memory,Remember your face when you were younger
-Scene,Imagery,Imagine an aquarium
-Speech,Memory,Remember your former teacher's voice
-Face,Imagery,Imagine a boy with freckles
-Scene,Memory,Remember a local grocery store
-Scene,Imagery,Imagine an ice cream store
-Face,Memory,Remember your parent's face
-Speech,Memory,Remember a work colleague's voice
-Scene,Memory,Remember your bathroom
-Face,Imagery,Imagine someone with a nose ring
-Speech,Imagery,Imagine repeating your family's names
-Speech,Memory,Remember the researcher's voice
-Scene,Memory,Remember your childhood home
-Speech,Imagery,Imagine reciting the months of the year
-Face,Memory,Remember your former classmate's face
-Face,Imagery,Imagine a man who is sad
-Scene,Imagery,Imagine a children's playground 
-Scene,Memory,Remember your high school
-Speech,Imagery,Imagine counting backwards from 10
-Face,Memory,Remember the president's face
-Scene,Imagery,Imagine a sunrise over the sea
-Speech,Memory,Remember your doctor's voice
-Face,Imagery,Imagine a baby's face
-Face,Memory,Remember a famous movie actor's face
-Speech,Imagery,Imagine reciting your phone number
-Scene,Imagery,Imagine an old church
-Face,Imagery,Imagine an old person's face
-Speech,Memory,Remember the current president's voice
-Scene,Memory,Remember a restaurant you like
-Scene,Imagery,Imagine visiting a new museum
-Face,Imagery,Imagine putting on a face mask
-Scene,Memory,Remember the front door of your home
-Speech,Imagery,Imagine reciting famous movie titles
-Speech,Memory,Remember your grandparent's voice
-Face,Memory,Remember a work colleague's face
+﻿category,condition,stimulus,attention_check
+Scene,Imagery,Imagine a nature trail in the summer,0
+Scene,Memory,Remember your bedroom,1
+Face,Imagery,Imagine a girl with braces,0
+Face,Memory,Remember a celebrity's face,2
+Speech,Imagery,Imagine reciting names of US presidents,0
+Speech,Memory,Remember your parent's voice,0
+Face,Imagery,Imagine a clown's face,0
+Scene,Memory,Remember your work place,0
+Face,Memory,Remember your grandparent's face,0
+Speech,Memory,Remember a close friend's voice,0
+Speech,Imagery,Imagine reciting the alphabet,0
+Scene,Imagery,Imagine a city skyline,0
+Face,Memory,Remember your face as it looked this morning,0
+Speech,Memory,Remember a famous celebrity's voice,0
+Scene,Imagery,Imagine a college campus,0
+Scene,Memory,Remember a park that you like,0
+Speech,Imagery,Imagine reciting the days of the week,0
+Face,Imagery,Imagine drawing a face with a pencil,0
+Face,Memory,Remember your face as it looks now,0
+Speech,Imagery,Imagine reciting colors of the rainbow,0
+Scene,Memory,Remember the outside of the hospital,0
+Face,Imagery,Imagine a woman who is smiling,0
+Speech,Memory,Remember your cousin's voice,0
+Scene,Imagery,Imagine a mountain range,0
+Scene,Memory,Remember your kitchen,0
+Speech,Imagery,Imagine counting up from 5,0
+Face,Imagery,Imagine a face wearing makeup,0
+Scene,Imagery,Imagine a busy shopping mall,0
+Speech,Memory,Remember your former classmate's voice,0
+Face,Memory,Remember your former teacher's face,0
+Face,Imagery,Imagine a bearded face,0
+Scene,Imagery,Imagine a movie theater,0
+Face,Memory,Remember a close friend's face,0
+Speech,Imagery,Imagine names of schools you've attended,0
+Speech,Memory,Remember your nurse's voice,0
+Scene,Memory,Remember your current neighborhood,0
+Speech,Imagery,Imagine reciting your street address,0
+Face,Memory,Remember your face when you were younger,0
+Scene,Imagery,Imagine an aquarium,0
+Speech,Memory,Remember your former teacher's voice,0
+Face,Imagery,Imagine a boy with freckles,0
+Scene,Memory,Remember a local grocery store,0
+Scene,Imagery,Imagine an ice cream store,0
+Face,Memory,Remember your parent's face,0
+Speech,Memory,Remember a work colleague's voice,0
+Scene,Memory,Remember your bathroom,0
+Face,Imagery,Imagine someone with a nose ring,0
+Speech,Imagery,Imagine repeating your family's names,0
+Speech,Memory,Remember the researcher's voice,0
+Scene,Memory,Remember your childhood home,0
+Speech,Imagery,Imagine reciting the months of the year,0
+Face,Memory,Remember your former classmate's face,0
+Face,Imagery,Imagine a man who is sad,0
+Scene,Imagery,Imagine a children's playground,0
+Scene,Memory,Remember your high school,0
+Speech,Imagery,Imagine counting backwards from 10,0
+Face,Memory,Remember the president's face,0
+Scene,Imagery,Imagine a sunrise over the sea,0
+Speech,Memory,Remember your doctor's voice,0
+Face,Imagery,Imagine a baby's face,0
+Face,Memory,Remember a famous movie actor's face,0
+Speech,Imagery,Imagine reciting your phone number,0
+Scene,Imagery,Imagine an old church,0
+Face,Imagery,Imagine an old person's face,0
+Speech,Memory,Remember the current president's voice,0
+Scene,Memory,Remember a restaurant you like,0
+Scene,Imagery,Imagine visiting a new museum,0
+Face,Imagery,Imagine putting on a face mask,0
+Scene,Memory,Remember the front door of your home,0
+Speech,Imagery,Imagine reciting famous movie titles,0
+Speech,Memory,Remember your grandparent's voice,0
+Face,Memory,Remember a work colleague's face,0

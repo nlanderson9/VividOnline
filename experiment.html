@@ -119,36 +119,51 @@
       {prompt: "To imagine this, I drew on a memory of a specific fact, place, person, or object", name: "specific_memory", labels: probe_labels, required: req}
     ];
 
+    var attention_questions1 = {prompt: "As an attention check, please select 'Strongly Disagree'", name: "attention_check1", labels: probe_labels, required: req};
+    var attention_questions2 = {prompt: "As an attention check, please select 'Neutral'", name: "attention_check2", labels: probe_labels, required: req};
+
+    function make_probe_questions() {
+      attention_check_status = jsPsych.timelineVariable('attention_check')
+      if (attention_check_status == 0) {
+        use_probes = probe_questions
+      }
+      if (attention_check_status == 1) {
+        use_probes = probe.questions.splice(5,0,attention_questions1)
+      }
+      if (attention_check_status == 2) {
+        use_probes = probe.questions.splice(14,0,attention_questions2)
+      }
+      return use_probes
+    }
+
     var question = {
       type: jsPsychSurveyLikert,
       preamble: function() {
         return `<br><br><div style="font-size:60px;">${jsPsych.timelineVariable('stimulus')}</div>`
       },
-      questions: probe_questions,
+      questions: make_probe_questions(),
       scale_width: 500,
       data: {
         task: 'questions',
         prompt: jsPsych.timelineVariable('stimulus'),
         category: jsPsych.timelineVariable('category'),
         condition: jsPsych.timelineVariable('condition'),
-        trial_number: jsPsych.timelineVariable('trial_number')
+        trial_number: jsPsych.timelineVariable('trial_number'),
+        attention_check: jsPsych.timelineVariable('attention_check')
       }
     };
-
-
-   
-
-
 
     
     async function createExperiment(){
                     const condition = await jsPsychPipe.getCondition("zM4MjmVtRXlb");
                     console.log(condition)
 
+                    var use_stimuli = test_stimuli[condition]
+
                     /* define test procedure */
                     var test_procedure = {
                       timeline: [imagine, question],
-                      timeline_variables: test_stimuli[condition]
+                      timeline_variables: use_stimuli
                     };
                     timeline.push(test_procedure);
 
