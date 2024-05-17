@@ -5,6 +5,7 @@
     <script src="jspsych/jspsych.js"></script>
     <script src="jspsych/plugin-html-keyboard-response.js"></script>
     <script src="jspsych/plugin-survey-likert.js"></script>
+    <script src="https://unpkg.com/@jspsych-contrib/plugin-pipe"></script>
     <script src="jquery-3.7.1.min.js"></script>
     <script src="jquery.csv.js"></script>
     <link href="jspsych/jspsych.css" rel="stylesheet" type="text/css" />
@@ -31,14 +32,32 @@
     var csv_data = $.csv.toObjects(data);
     console.log(csv_data);
 
-    var test_stimuli = csv_data.slice(0,4);
-    test_stimuli.forEach((object, i) => object.trial_number = i + 1);
+    var test_stimuli0 = csv_data.slice(0,4);
+    test_stimuli0.forEach((object, i) => object.trial_number = i + 1);
+
+    var test_stimuli1 = csv_data.slice(5,9);
+    test_stimuli1.forEach((object, i) => object.trial_number = i + 1);
+
+    var test_stimuli2 = csv_data.slice(10,14);
+    test_stimuli2.forEach((object, i) => object.trial_number = i + 1);
+
+    var test_stimuli3 = csv_data.slice(15,19);
+    test_stimuli3.forEach((object, i) => object.trial_number = i + 1);
+
+    var test_stimuli4 = csv_data.slice(20,24);
+    test_stimuli4.forEach((object, i) => object.trial_number = i + 1);
+
+    var test_stimuli5 = csv_data.slice(25,29);
+    test_stimuli5.forEach((object, i) => object.trial_number = i + 1);
 
 
     var req = false;
     var imagine_time = 5000;
 
-
+    
+    const subject_id = jsPsych.randomization.randomID(10);
+    const filename = `${subject_id}.csv`;
+            
 
 
     var jsPsych = initJsPsych({
@@ -67,6 +86,7 @@
       data: {
         task: 'imagine',
         prompt: jsPsych.timelineVariable('stimulus'),
+        category: jsPsych.timelineVariable('category'),
         condition: jsPsych.timelineVariable('condition'),
         trial_number: jsPsych.timelineVariable('trial_number')
       }
@@ -107,19 +127,79 @@
       data: {
         task: 'questions',
         prompt: jsPsych.timelineVariable('stimulus'),
+        category: jsPsych.timelineVariable('category'),
         condition: jsPsych.timelineVariable('condition'),
         trial_number: jsPsych.timelineVariable('trial_number')
       }
     };
 
+
+    var timeline0 = timeline;
+    var timeline1 = timeline;
+    var timeline2 = timeline;
+    var timeline3 = timeline;
+    var timeline4 = timeline;
+    var timeline5 = timeline;
+
     /* define test procedure */
-    var test_procedure = {
+    var test_procedure0 = {
       timeline: [imagine, question],
-      timeline_variables: test_stimuli
+      timeline_variables: test_stimuli0
     };
-    timeline.push(test_procedure);
+    timeline0.push(test_procedure);
+    var test_procedure1 = {
+      timeline: [imagine, question],
+      timeline_variables: test_stimuli1
+    };
+    timeline1.push(test_procedure);
+    var test_procedure2 = {
+      timeline: [imagine, question],
+      timeline_variables: test_stimuli2
+    };
+    timeline2.push(test_procedure);
+    var test_procedure3 = {
+      timeline: [imagine, question],
+      timeline_variables: test_stimuli3
+    };
+    timeline3.push(test_procedure);
+    var test_procedure4 = {
+      timeline: [imagine, question],
+      timeline_variables: test_stimuli4
+    };
+    timeline4.push(test_procedure);
+    var test_procedure5 = {
+      timeline: [imagine, question],
+      timeline_variables: test_stimuli5
+    };
+    timeline5.push(test_procedure);
 
 
-    jsPsych.run(timeline);
+    const save_data = {
+                type: jsPsychPipe,
+                action: "save",
+                experiment_id: "zM4MjmVtRXlb",
+                filename: filename,
+                data_string: ()=>jsPsych.data.get().csv()
+              };
+
+    timeline0.push(save_data)
+    timeline1.push(save_data)
+    timeline2.push(save_data)
+    timeline3.push(save_data)
+    timeline4.push(save_data)
+    timeline5.push(save_data)
+
+    
+    async function createExperiment(){
+                    const condition = await jsPsychPipe.getCondition("zM4MjmVtRXlb");
+                    if(condition == 0) { timeline = timeline0; }
+                    if(condition == 1) { timeline = timeline1; }
+                    if(condition == 2) { timeline = timeline2; }
+                    if(condition == 3) { timeline = timeline3; }
+                    if(condition == 4) { timeline = timeline4; }
+                    if(condition == 5) { timeline = timeline5; }
+                    jsPsych.run(timeline);
+                  }
+    createExperiment();
   </script>
 </html>
