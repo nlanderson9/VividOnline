@@ -139,9 +139,11 @@
         }
         if (attention_check_status == "1") {
           use_probes = probe.questions.splice(5,0,attention_questions1)
+          console.log(use_probes)
         }
         if (attention_check_status == "2") {
           use_probes = probe.questions.splice(14,0,attention_questions2)
+          console.log(use_probes)
         }
         return use_probes
       },
