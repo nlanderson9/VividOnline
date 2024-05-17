@@ -66,12 +66,27 @@
             
 
 
-    var jsPsych = initJsPsych({
-      on_finish: function() {
-        jsPsych.data.displayData();
-      }
-    })
+    var jsPsych = initJsPsych()
     timeline = [];
+
+    var consent = {
+      type: jsPsychSurveyLikert,
+      preamble: "This is a placeholder for the text of the consent form",
+      questions: [
+        {prompt: "This is a placeholder for opting in for contact about future studies",
+         name: "future_studies",
+         labels: ["Opt-In", "Opt-Out"]},
+        {prompt: "This is a placeholder for agreeing to the consent",
+         name: "consent_agree",
+         labels: ["Continue", "Withdraw"]}
+      ],
+      on_finish: function(data){
+        if(data.response.consent_agree == "Withdraw"){
+          jsPsych.endExperiment(`<p>You have withdrawn your consent to participate in our experiment. Please go back to Prolific to return your submission.</p>
+          <p><a href="https://prolific.co/">Click here to return to Prolific</a>.</p>`);
+        }
+      }
+    }
 
 
     /* define welcome message trial */
@@ -166,31 +181,31 @@
 
     
     async function createExperiment(){
-                    const condition = await jsPsychPipe.getCondition("zM4MjmVtRXlb");
-                    console.log(condition)
+      const condition = await jsPsychPipe.getCondition("zM4MjmVtRXlb");
+      console.log(condition)
 
-                    var use_stimuli = test_stimuli[condition]
+      var use_stimuli = test_stimuli[condition]
 
-                    /* define test procedure */
-                    var test_procedure = {
-                      timeline: [imagine, question],
-                      timeline_variables: use_stimuli
-                    };
-                    timeline.push(test_procedure);
+      /* define test procedure */
+      var test_procedure = {
+        timeline: [imagine, question],
+        timeline_variables: use_stimuli
+      };
+      timeline.push(test_procedure);
 
-                    const save_data = {
-                      type: jsPsychPipe,
-                      action: "save",
-                      experiment_id: "zM4MjmVtRXlb",
-                      filename: filename,
-                      data_string: ()=>jsPsych.data.get().csv()
-                    };
+      const save_data = {
+        type: jsPsychPipe,
+        action: "save",
+        experiment_id: "zM4MjmVtRXlb",
+        filename: filename,
+        data_string: ()=>jsPsych.data.get().csv()
+      };
 
-                    timeline.push(save_data)
+      timeline.push(save_data)
 
-                    console.log(timeline)
-                    jsPsych.run(timeline);
-                  }
+      console.log(timeline)
+      jsPsych.run(timeline);
+    }
     createExperiment();
   </script>
 </html>
