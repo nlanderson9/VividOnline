@@ -81,6 +81,7 @@
          labels: ["Continue", "Withdraw"]}
       ],
       on_finish: function(data){
+        console.log(data)
         if(data.response.consent_agree == "Withdraw"){
           jsPsych.endExperiment(`<p>You have withdrawn your consent to participate in our experiment. Please go back to Prolific to return your submission.</p>
           <p><a href="https://prolific.co/">Click here to return to Prolific</a>.</p>`);
