@@ -140,6 +140,8 @@
     var question = {
       type: jsPsychSurveyLikert,
       preamble: function() {
+        console.log('test')
+        console.log(jsPsych.timelineVariable('stimulus'))
         return `<br><br><div style="font-size:60px;">${jsPsych.timelineVariable('stimulus')}</div>`
       },
       questions: make_probe_questions(),
