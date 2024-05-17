@@ -193,14 +193,14 @@
     async function createExperiment(){
                     const condition = await jsPsychPipe.getCondition("zM4MjmVtRXlb");
                     console.log(condition)
-                    if(condition == 0) { timeline = timeline0; }
-                    if(condition == 1) { timeline = timeline1; }
-                    if(condition == 2) { timeline = timeline2; }
-                    if(condition == 3) { timeline = timeline3; }
-                    if(condition == 4) { timeline = timeline4; }
-                    if(condition == 5) { timeline = timeline5; }
-                    console.log(timeline)
-                    jsPsych.run(timeline);
+                    if(condition == 0) { var use_timeline = timeline0; }
+                    if(condition == 1) { var use_timeline = timeline1; }
+                    if(condition == 2) { var use_timeline = timeline2; }
+                    if(condition == 3) { var use_timeline = timeline3; }
+                    if(condition == 4) { var use_timeline = timeline4; }
+                    if(condition == 5) { var use_timeline = timeline5; }
+                    console.log(use_timeline)
+                    jsPsych.run(use_timeline);
                   }
     createExperiment();
   </script>
