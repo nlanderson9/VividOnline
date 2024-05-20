@@ -65,14 +65,13 @@
     }
     const subject_id = "testingProlificID" + getRandomInt(10000,99999);
     const filename = `${subject_id}.csv`;
-            
-    jsPsych.data.addProperties({
-      subject: subject_id
-    });
-
 
     var jsPsych = initJsPsych()
     timeline = [];
+
+    jsPsych.data.addProperties({
+      subject: subject_id
+    });
 
     var consent = {
       type: jsPsychSurveyMultiChoice,
