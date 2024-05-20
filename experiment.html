@@ -96,15 +96,18 @@
     var demographics = {
       type: jsPsychSurveyHtmlForm,
       preamble: '<p>This is the placeholder for the demographics questionnaire</p>',
-      html: `<fieldset style="text-align: left;">
+      html: `
+            <!-- Age -->
+            <fieldset style="text-align: left;">
               <legend>Age</legend>
               <div>
-                <input name="age" type="text" />
+                <input name="age" type="number" min="1" max="110" />
               </div>
-             </fieldset>
-             <br><br>
+            </fieldset>
+            <br>
 
-             <fieldset style="text-align: left;">
+            <!-- Gender -->
+            <fieldset style="text-align: left;">
               <legend>Gender</legend>
               <div>
                 <input name="gender" type="radio" id="male" value="male" />
@@ -115,13 +118,131 @@
                 <label for="male">Female</label>
               </div>
               <div>
-                <input name="gender" type="radio" id="transgender/non-binary" value="transgender/non-binary" />
-                <label for="male">Transgender/Non-binary</label>
+                <input name="gender" type="radio" id="transgender_non_binary" value="transgender_non_binary" />
+                <label for="transgender_non_binary">Transgender/Non-binary</label>
               </div>
               <div>
                 <input name="gender" type="radio" id="other" value="other" />
-                <label for="male">Other</label>
-              </div>`
+                <label for="other">Other</label>
+              </div>
+            </fieldset>
+            <br>
+             
+            <!-- Ethnicity -->
+            <fieldset style="text-align: left;">
+              <legend>Ethnicity</legend>
+              <div>
+                <input name="ethnicity" type="radio" id="hispanic" value="hispanic" />
+                <label for="hispanic">Hispanic</label>
+              </div>
+              <div>
+                <input name="ethnicity" type="radio" id="non_hispanic" value="non_hispanic" />
+                <label for="non_hispanic">Not Hispanic</label>
+              </div>
+            </fieldset>
+            <br>
+            
+            <!-- Race -->
+            <fieldset style="text-align: left;">
+              <legend>Race</legend>
+              <div>
+                <input name="race" type="radio" id="american_indian_alaska_native_indigenous" value="american_indian_alaska_native_indigenous" />
+                <label for="american_indian_alaska_native_indigenous">American Indian/Alaska Native/Indigenous</label>
+              </div>
+              <div>
+                <input name="race" type="radio" id="asian" value="asian" />
+                <label for="asian">Asian</label>
+              </div>
+              <div>
+                <input name="race" type="radio" id="black" value="black" />
+                <label for="black">Black/African American</label>
+              </div>
+              <div>
+                <input name="race" type="radio" id="white" value="white" />
+                <label for="white">Caucasian/White</label>
+              </div>
+              <div>
+                <input name="race" type="radio" id="hawaiian_pacific_islander" value="hawaiian_pacific_islander" />
+                <label for="hawaiian_pacific_islander">Native Hawaiian/Pacific Islander</label>
+              </div>
+              <div>
+                <input name="race" type="radio" id="unknown" value="unknown" />
+                <label for="unknown">Unknown or Not Reported</label>
+              </div>
+            </fieldset>
+            <br>
+            
+            <!-- Education -->
+            <fieldset style="text-align: left;">
+              <legend>Highest level of education</legend>
+              <div>
+                <input name="education" type="radio" id="junior_high" value="junior_high" />
+                <label for="junior_high">Junior High</label>
+              </div>
+              <div>
+                <input name="education" type="radio" id="some_high_school" value="some_high_school" />
+                <label for="some_high_school">Some High School</label>
+              </div>
+              <div>
+                <input name="education" type="radio" id="high_school_diploma" value="high_school_diploma" />
+                <label for="high_school_diploma">High school diploma or equivalent degree</label>
+              </div>
+              <div>
+                <input name="education" type="radio" id="associates_degree" value="associates_degree" />
+                <label for="associates_degree">Associate's degree</label>
+              </div>
+              <div>
+                <input name="education" type="radio" id="bachelors_degree" value="bachelors_degree" />
+                <label for="bachelors_degree">Bachelor's degree</label>
+              </div>
+              <div>
+                <input name="education" type="radio" id="masters_degree" value="masters_degree" />
+                <label for="masters_degree">Master's degree</label>
+              </div>
+              <div>
+                <input name="education" type="radio" id="doctorate" value="doctorate" />
+                <label for="doctorate">Doctorate (PhD, MD, JD, etc.)</label>
+              </div>
+            </fieldset>
+            <br>
+            
+            <!-- Native English -->
+            <fieldset style="text-align: left;">
+              <legend>Was English your first language?</legend>
+              <div>
+                <input name="native_english" type="radio" id="english_yes" value="english_yes" />
+                <label for="english_yes">Yes</label>
+              </div>
+              <div>
+                <input name="native_english" type="radio" id="english_no" value="english_no" />
+                <label for="english_no">No</label>
+              </div>
+            </fieldset>
+            <br>
+            
+            <!-- Age Starting English -->
+            <fieldset style="text-align: left;">
+              <legend>Age Learning English</legend>
+              If English was <strong>not</strong> your first language,<br>at what age did you first learn English?
+              <div>
+                <input name="learning_english" type="number" min="0", max="110" />
+              </div>
+            </fieldset>
+            <br>
+            
+            <!-- Vision -->
+            <fieldset style="text-align: left;">
+              <legend>Vision</legend>
+              Do you have normal, or corrected-to-normal, vision?
+              <div>
+                <input name="vision" type="radio" id="vision_yes" value="vision_yes" />
+                <label for="vision_yes">Yes</label>
+              </div>
+              <div>
+                <input name="vision" type="radio" id="vision_no" value="vision_no" />
+                <label for="vision_no">No</label>
+              </div>
+            </fieldset>`
     };
     timeline.push(demographics);
 
