@@ -96,7 +96,32 @@
     var demographics = {
       type: jsPsychSurveyHtmlForm,
       preamble: '<p>This is the placeholder for the demographics questionnaire</p>',
-      html: '<p> Age <input name="age" type="text" /><br><br>Gender<input name="gender" type="radio" id="male" value="male" /><input name="gender" type="radio" id="female" value="female" /><input name="gender" type="radio" id="transgender/non-binary" value="transgender/non-binary" /><input name="gender" type="radio" id="other" value="other" /></p>'
+      html: `<fieldset>
+              <legend>Age</legend>
+              <div>
+                <input name="age" type="text" />
+              </div>
+             </fieldset>
+             <br><br>
+             
+             <fieldset>
+              <legend>Gender</legend>
+              <div>
+                <input name="gender" type="radio" id="male" value="male" />
+                <label for="male">Male</label>
+              </div>
+              <div>
+                <input name="gender" type="radio" id="female" value="female" />
+                <label for="male">Female</label>
+              </div>
+              <div>
+                <input name="gender" type="radio" id="transgender/non-binary" value="transgender/non-binary" />
+                <label for="male">Transgender/Non-binary</label>
+              </div>
+              <div>
+                <input name="gender" type="radio" id="other" value="other" />
+                <label for="male">Other</label>
+              </div>`
     };
     timeline.push(demographics);
 
