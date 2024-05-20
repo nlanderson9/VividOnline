@@ -285,6 +285,7 @@
       ],
       on_finish: function(data) {
         var get_data = jsPsych.data.get().last(1).values()[0]
+        console.log(get_data)
         var prev_num_tries = get_data.instructions_num_tries
         data.instructions_num_tries = prev_num_tries + 1;
       }
