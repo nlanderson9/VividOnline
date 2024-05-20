@@ -130,6 +130,7 @@
         timeline: [loop_trial],
         conditional_function: function() {
           var data = jsPsych.data.get().last(1).values()[0];
+          console.log(data)
           if(data.response.instructions_quiz1 == 2 & data.response.instructions_quiz2 == 4){
                 return false;
             } else {
@@ -137,6 +138,7 @@
             }
         },
         loop_function: function(data){
+          console.log(data)
             if(data.response.instructions_quiz1 == 2 & data.response.instructions_quiz2 == 4){
                 return true;
             } else {
