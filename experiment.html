@@ -90,6 +90,61 @@
     }
     timeline.push(consent);
 
+
+    var demographics = {
+      type: jsPsychSurveyHtmlForm,
+      preamble: '<p>This is the placeholder for the demographics questionnaire</p>',
+      html: '<p> Age <input name="age" type="text" /><br><br>Gender<input name="gender" type="radio" id="male" value="male" /><input name="gender" type="radio" id="female" value="female" /><input name="gender" type="radio" id="transgender/non-binary" value="transgender/non-binary" /><input name="gender" type="radio" id="other" value="other" /></p>'
+    };
+    timeline.push(demographics);
+
+    var instructions = {
+      type: jsPsychSurveyLikert,
+      preamble: "This is a placeholder for the experiment instructions",
+      questions: [
+        {prompt: "First instructions quiz question",
+         name: "instructions_quiz1",
+         labels: ["Option1", "Option2", "Option3", "Option4"]},
+        {prompt: "Second instructions quiz question",
+         name: "instructions_quiz2",
+         labels: ["Option1", "Option2", "Option3", "Option4"]}
+      ]
+    }
+    timeline.push(instructions)
+
+    var loop_trial = {
+      type: jsPsychSurveyLikert,
+      preamble: "This is a placeholder for the page when you fail the experiment instructions and need to try again",
+      questions: [
+        {prompt: "First instructions quiz question",
+         name: "instructions_quiz1",
+         labels: ["Option1", "Option2", "Option3", "Option4"]},
+        {prompt: "Second instructions quiz question",
+         name: "instructions_quiz2",
+         labels: ["Option1", "Option2", "Option3", "Option4"]}
+      ]
+    }
+
+    var loop_node = {
+        timeline: [loop_trial],
+        conditional_function: function() {
+          var data = jsPsych.data.get().last(1).values()[0];
+          if(data.response.instructions_quiz1 == 2 & data.response.instructions_quiz2 == 4){
+                return false;
+            } else {
+                return true;
+            }
+        },
+        loop_function: function(data){
+            if(data.response.instructions_quiz1 == 2 & data.response.instructions_quiz2 == 4){
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+    timeline.push(loop_node)
+
     /* define imagine and question trials */
     var imagine = {
       type: jsPsychHtmlKeyboardResponse,
