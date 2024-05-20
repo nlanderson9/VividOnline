@@ -138,8 +138,9 @@
             }
         },
         loop_function: function(data){
-          console.log(data)
-            if(data.response.instructions_quiz1 == 2 & data.response.instructions_quiz2 == 4){
+          this_data = data.trials[0]
+          console.log(this_data)
+            if(this_data.response.instructions_quiz1 == 2 & this_data.response.instructions_quiz2 == 4){
                 return true;
             } else {
                 return false;
