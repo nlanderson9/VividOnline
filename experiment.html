@@ -6,6 +6,7 @@
     <script src="jspsych/plugin-html-keyboard-response.js"></script>
     <script src="jspsych/plugin-survey-html-form.js"></script>
     <script src="jspsych/plugin-survey-likert.js"></script>
+    <script src="jspsych/plugin-survey-multi-choice.js"></script>
     <script src="https://unpkg.com/@jspsych-contrib/plugin-pipe"></script>
     <script src="jquery-3.7.1.min.js"></script>
     <script src="jquery.csv.js"></script>
@@ -100,18 +101,18 @@
     timeline.push(demographics);
 
     var instructions = {
-      type: jsPsychSurveyLikert,
+      type: jsPsychSurveyMultiChoice,
       preamble: "This is a placeholder for the experiment instructions",
       questions: [
         {prompt: "First instructions quiz question",
          name: "instructions_quiz1",
-         labels: ["Option1", "Option2", "Option3", "Option4"]},
+         options: ["Option1", "Option2", "Option3", "Option4"]},
         {prompt: "Second instructions quiz question",
          name: "instructions_quiz2",
-         labels: ["Option1", "Option2", "Option3", "Option4"]}
+         options: ["Option1", "Option2", "Option3", "Option4"]}
       ]
     }
-    timeline.push(instructions)
+    timeline.push(instructions);
 
     var loop_trial = {
       type: jsPsychSurveyLikert,
@@ -119,10 +120,10 @@
       questions: [
         {prompt: "First instructions quiz question",
          name: "instructions_quiz1",
-         labels: ["Option1", "Option2", "Option3", "Option4"]},
+         options: ["Option1", "Option2", "Option3", "Option4"]},
         {prompt: "Second instructions quiz question",
          name: "instructions_quiz2",
-         labels: ["Option1", "Option2", "Option3", "Option4"]}
+         options: ["Option1", "Option2", "Option3", "Option4"]}
       ]
     }
 
@@ -147,7 +148,14 @@
             }
         }
     }
-    timeline.push(loop_node)
+    timeline.push(loop_node);
+
+    var start_experiment = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: "Cool! Time to start the experiment. Press X to begin.",
+      choices: ["x"]
+    };
+    timeline.push(start_experiment);
 
     /* define imagine and question trials */
     var imagine = {
