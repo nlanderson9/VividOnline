@@ -66,6 +66,9 @@
     const subject_id = "testingProlificID" + getRandomInt(10000,99999);
     const filename = `${subject_id}.csv`;
             
+    jsPsych.data.addProperties({
+      subject: subject_id
+    });
 
 
     var jsPsych = initJsPsych()
@@ -257,7 +260,10 @@
         {prompt: "Second instructions quiz question",
          name: "instructions_quiz2",
          options: ["Option1", "Option2", "Option3", "Option4"]}
-      ]
+      ],
+      data: {
+        instructions_num_tries: 1
+      }
     }
     timeline.push(instructions);
 
@@ -271,7 +277,12 @@
         {prompt: "Second instructions quiz question",
          name: "instructions_quiz2",
          options: ["Option1", "Option2", "Option3", "Option4"]}
-      ]
+      ],
+      on_finish: function(data) {
+        var get_data = jsPsych.data.get().last(1).values()[0]
+        var prev_num_tries = get_data.instructions_num_tries
+        data.instructions_num_tries = prev_num_tries + 1;
+      }
     }
 
     var loop_node = {
@@ -391,6 +402,10 @@
     async function createExperiment(){
       const condition = await jsPsychPipe.getCondition("zM4MjmVtRXlb");
       console.log(condition)
+
+      jsPsych.data.addProperties({
+        condition: condition
+      });
 
       var use_stimuli = test_stimuli[condition]
 
