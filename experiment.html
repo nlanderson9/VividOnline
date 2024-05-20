@@ -131,7 +131,7 @@
         conditional_function: function() {
           var data = jsPsych.data.get().last(1).values()[0];
           console.log(data)
-          if(data.response.instructions_quiz1 == 2 & data.response.instructions_quiz2 == 4){
+          if(data.response.instructions_quiz1 == 1 & data.response.instructions_quiz2 == 3){
                 return false;
             } else {
                 return true;
@@ -140,10 +140,10 @@
         loop_function: function(data){
           this_data = data.trials[0]
           console.log(this_data)
-            if(this_data.response.instructions_quiz1 == 2 & this_data.response.instructions_quiz2 == 4){
-                return true;
-            } else {
+            if(this_data.response.instructions_quiz1 == 1 & this_data.response.instructions_quiz2 == 3){
                 return false;
+            } else {
+                return true;
             }
         }
     }
