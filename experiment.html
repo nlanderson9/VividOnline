@@ -350,7 +350,7 @@
     var probe_labels = ['Strongly Disagree', '', 'Disagree', '', 'Neutral', '', 'Agree', '', 'Strongly Agree'];
 
 
-    const probe_questions = [
+    var probe_questions = [
       {prompt: "How vividly did you imagine mental images?", name: "visual_vividness", labels: vividness_labels, required: req},
       {prompt: "How vividly did you imagine mental sounds?", name: "auditory_vividness", labels: vividness_labels, required: req},
       {prompt: "I envisioned the location of objects, people, or places", name: "locations", labels: probe_labels, required: req},
@@ -386,7 +386,7 @@
         attention_check_status = jsPsych.timelineVariable('attention_check')
         console.log(attention_check_status)
         console.log(probe_questions)
-        var use_probes = probe_questions
+        var use_probes = probe_questions.slice();
         console.log(use_probes)
         if (attention_check_status == 1) {
           console.log("check1")
