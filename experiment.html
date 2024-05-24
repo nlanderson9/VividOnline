@@ -386,13 +386,13 @@
         attention_check_status = jsPsych.timelineVariable('attention_check')
         console.log(attention_check_status)
         use_probes = probe_questions
-        if (attention_check_status == "1") {
+        if (attention_check_status == 1) {
           use_probes.splice(6,0,attention_questions1)
         }
-        if (attention_check_status == "2") {
+        if (attention_check_status == 2) {
           use_probes.splice(11,0,attention_questions2)
         }
-        if (attention_check_status == "3") {
+        if (attention_check_status == 3) {
           use_probes.splice(15,0,attention_questions3)
         }
         return use_probes
