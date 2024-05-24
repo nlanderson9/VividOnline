@@ -34,22 +34,22 @@
     var csv_data = $.csv.toObjects(data);
     console.log(csv_data);
 
-    var test_stimuli0 = csv_data.slice(0,4);
+    var test_stimuli0 = csv_data.slice(0,29);
     test_stimuli0.forEach((object, i) => object.trial_number = i);
 
-    var test_stimuli1 = csv_data.slice(5,9);
+    var test_stimuli1 = csv_data.slice(0,29);
     test_stimuli1.forEach((object, i) => object.trial_number = i);
 
-    var test_stimuli2 = csv_data.slice(10,14);
+    var test_stimuli2 = csv_data.slice(0,29);
     test_stimuli2.forEach((object, i) => object.trial_number = i);
 
-    var test_stimuli3 = csv_data.slice(15,19);
+    var test_stimuli3 = csv_data.slice(0,29);
     test_stimuli3.forEach((object, i) => object.trial_number = i);
 
-    var test_stimuli4 = csv_data.slice(20,24);
+    var test_stimuli4 = csv_data.slice(0,29);
     test_stimuli4.forEach((object, i) => object.trial_number = i);
 
-    var test_stimuli5 = csv_data.slice(25,29);
+    var test_stimuli5 = csv_data.slice(0,29);
     test_stimuli5.forEach((object, i) => object.trial_number = i);
 
     test_stimuli = [test_stimuli0, test_stimuli1, test_stimuli2, test_stimuli3, test_stimuli4, test_stimuli5]
@@ -323,7 +323,7 @@
 
     var start_experiment = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: "Cool! Time to start the experiment. Press X to begin.",
+      stimulus: "<p>Correct! You are now ready to begin the experiment.<br><br>Press the <strong>X</strong> key to begin.</p>",
       choices: ["x"]
     };
     timeline.push(start_experiment);
@@ -372,7 +372,7 @@
 
     var attention_questions1 = {prompt: "As an attention check, please select 'Strongly Disagree'", name: "attention_check1", labels: probe_labels, required: req};
     var attention_questions2 = {prompt: "As an attention check, please select 'Neutral'", name: "attention_check2", labels: probe_labels, required: req};
-
+    var attention_questions3 = {prompt: "As an attention check, please select 'Agree'", name: "attention_check3", labels: probe_labels, required: req};
 
 
     var question = {
@@ -387,16 +387,13 @@
         console.log(attention_check_status)
         use_probes = probe_questions
         if (attention_check_status == "1") {
-          console.log("original questions")
-          console.log(probe_questions)
-          console.log("attention_question")
-          console.log(attention_questions1)
-          use_probes.splice(5,0,attention_questions1)
-          console.log(use_probes)
+          use_probes.splice(6,0,attention_questions1)
         }
         if (attention_check_status == "2") {
-          use_probes.splice(14,0,attention_questions2)
-          console.log(use_probes)
+          use_probes.splice(11,0,attention_questions2)
+        }
+        if (attention_check_status == "3") {
+          use_probes.splice(15,0,attention_questions3)
         }
         return use_probes
       },
