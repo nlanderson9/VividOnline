@@ -385,7 +385,7 @@
       questions: function () {
         attention_check_status = jsPsych.timelineVariable('attention_check')
         console.log(attention_check_status)
-        use_probes = probe_questions
+        var use_probes = probe_questions
         if (attention_check_status == 1) {
           console.log("check1")
           use_probes.splice(6,0,attention_questions1)
