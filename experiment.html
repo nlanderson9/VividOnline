@@ -440,11 +440,11 @@
       timeline.push(save_data)
 
       var redirect = {
-        type: jsPsychSurveyMultiChoice,
-        preamble: `<p>Thank you! You've completed this part of the experiment.<br><br>
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: `<p>Thank you! You've completed this part of the experiment.<br><br>
           Please click below to be redirected to the page with the next section of the experiment.<br><br>
-          <p><a href="https://redcap.nubic.northwestern.edu/redcap/surveys/?s=48KN88YCCCPWC4RP&prolific_id=${subject_id}">Click here for second part of experiment</a></p>`,
-          questions: []
+          <p><a href="https://redcap.nubic.northwestern.edu/redcap/surveys/?s=ET83PMYTR3FRPXCE&prolific_id=${subject_id}">Click here for second part of experiment</a></p>`,
+          choices: "NO_KEYS"
       }
       timeline.push(redirect)
 
