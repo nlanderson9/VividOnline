@@ -440,7 +440,10 @@
         preamble: `<p>Thank you! You've completed this part of the experiment.<br><br>
           Please click below to be redirected to the page with the next section of the experiment.<br><br></p>`,
         html: "",
-        button_label: "Proceed to next section"
+        button_label: "Proceed to next section",
+        data: {
+          task_finished: "TRUE"
+        }
       }
       timeline.push(redirect)
 
