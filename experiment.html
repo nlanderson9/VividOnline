@@ -66,7 +66,11 @@
     const subject_id = "testingProlificID" + getRandomInt(10000,99999);
     const filename = `${subject_id}.csv`;
 
-    var jsPsych = initJsPsych()
+    var jsPsych = initJsPsych({
+      on_finish: function(){
+        window.location = `https://redcap.nubic.northwestern.edu/redcap/surveys/?s=ET83PMYTR3FRPXCE&prolific_id=${subject_id}`
+      }
+    });
     timeline = [];
 
     jsPsych.data.addProperties({
@@ -431,6 +435,14 @@
       };
       timeline.push(test_procedure);
 
+      var redirect = {
+        type: jsPsychSurveyHtmlForm,
+        preamble: `<p>Thank you! You've completed this part of the experiment.<br><br>
+          Please click below to be redirected to the page with the next section of the experiment.<br><br></p>`,
+        html: ""
+      }
+      timeline.push(redirect)
+
       const save_data = {
         type: jsPsychPipe,
         action: "save",
@@ -440,15 +452,6 @@
       };
 
       timeline.push(save_data)
-
-      var redirect = {
-        type: jsPsychHtmlKeyboardResponse,
-        stimulus: `<p>Thank you! You've completed this part of the experiment.<br><br>
-          Please click below to be redirected to the page with the next section of the experiment.<br><br>
-          <p><a href="https://redcap.nubic.northwestern.edu/redcap/surveys/?s=ET83PMYTR3FRPXCE&prolific_id=${subject_id}">Click here for second part of experiment</a></p>`,
-          choices: "NO_KEYS"
-      }
-      timeline.push(redirect)
 
       console.log(timeline)
       jsPsych.run(timeline);
