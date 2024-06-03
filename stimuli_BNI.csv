@@ -1,20 +1,20 @@
 ﻿category,condition,stimulus,attention_check
 Scene,Imagery,Imagine a nature trail in the summer,0
 Scene,Memory,Remember your bedroom,0
-Face,Imagery,Imagine a girl with braces,0
+Face,Imagery,Imagine a girl with braces,1
 Face,Memory,Remember a celebrity's face,0
 Speech,Imagery,Imagine reciting names of US presidents,0
 Speech,Memory,Remember your parent's voice,0
 Face,Imagery,Imagine a clown's face,0
-Scene,Memory,Remember your work place,1
-Face,Memory,Remember your grandparent's face,0
+Scene,Memory,Remember your work place,0
+Face,Memory,Remember your grandparent's face,2
 Speech,Memory,Remember a close friend's voice,0
 Speech,Imagery,Imagine reciting the alphabet,0
 Scene,Imagery,Imagine a city skyline,0
 Face,Memory,Remember your face as it looked this morning,0
 Speech,Memory,Remember a famous celebrity's voice,0
 Scene,Imagery,Imagine a college campus,0
-Scene,Memory,Remember a park that you like,2
+Scene,Memory,Remember a park that you like,3
 Speech,Imagery,Imagine reciting the days of the week,0
 Face,Imagery,Imagine drawing a face with a pencil,0
 Face,Memory,Remember your face as it looks now,0
@@ -24,7 +24,7 @@ Face,Imagery,Imagine a woman who is smiling,0
 Speech,Memory,Remember your cousin's voice,0
 Scene,Imagery,Imagine a mountain range,0
 Scene,Memory,Remember your kitchen,0
-Speech,Imagery,Imagine counting up from 5,3
+Speech,Imagery,Imagine counting up from 5,0
 Face,Imagery,Imagine a face wearing makeup,0
 Scene,Imagery,Imagine a busy shopping mall,0
 Speech,Memory,Remember your former classmate's voice,0
