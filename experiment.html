@@ -58,6 +58,8 @@
     var req = false;
     var imagine_time = 5000;
 
+    var withdrawn = false;
+
     // function getRandomInt(min, max) {
     //     min = Math.ceil(min);
     //     max = Math.floor(max);
@@ -71,7 +73,12 @@
         trial.type.jsPsych.data.dataProperties.timestamp = (new Date).toISOString().replace(/z|t/gi,' ').trim()
       },
       on_finish: function(){
-        window.location = `https://redcap.nubic.northwestern.edu/redcap/surveys/?s=ET83PMYTR3FRPXCE&prolific_id=${subject_id}`
+        if (withdrawn == true){
+          window.location = `https://www.prolific.com/`
+        } else {
+          window.location = `https://redcap.nubic.northwestern.edu/redcap/surveys/?s=ET83PMYTR3FRPXCE&prolific_id=${subject_id}`
+        }
+        
       }
     });
 
@@ -99,8 +106,8 @@
       on_finish: function(data){
         console.log(data)
         if(data.response.consent_agree == "Withdraw"){
-          jsPsych.endExperiment(`<p>You have withdrawn your consent to participate in our experiment. Please go back to Prolific to return your submission.</p>
-          <p><a href="https://prolific.co/">Click here to return to Prolific</a>.</p>`);
+          withdrawn = true;
+          jsPsych.endExperiment(`<p>You have withdrawn your consent to participate in our experiment</p>`);
         }
       }
     }
