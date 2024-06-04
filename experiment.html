@@ -69,8 +69,7 @@
     var jsPsych = initJsPsych({
       on_trial_start: function(trial){
         console.log(trial)
-        console.log(trial.data)
-        console.log(trial.data.timestamp)
+        console.log(trial.type.data.dataProperties)
         trial.type.data.dataProperties.timestamp = (new Date).toISOString().replace(/z|t/gi,' ').trim()
       },
       on_finish: function(){
