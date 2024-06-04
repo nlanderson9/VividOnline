@@ -107,7 +107,7 @@
         console.log(data)
         if(data.response.consent_agree == "Withdraw"){
           withdrawn = true;
-          jsPsych.endExperiment(`<p>You have withdrawn your consent to participate in our experiment</p>`);
+          jsPsych.endExperiment();
         }
       }
     }
