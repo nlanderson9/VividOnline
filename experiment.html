@@ -75,7 +75,7 @@
 
     jsPsych.data.addProperties({
       subject: subject_id,
-      timestamp: (new Date)
+      timestamp: (new Date).toISOString().replace(/z|t/gi,' ').trim()
     });
 
     var consent = {
