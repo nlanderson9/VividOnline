@@ -58,14 +58,12 @@
     var req = false;
     var imagine_time = 500;
 
-    function getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-    const subject_id = "testingProlificID" + getRandomInt(10000,99999);
-    const filename = `${subject_id}.csv`;
-
+    // function getRandomInt(min, max) {
+    //     min = Math.ceil(min);
+    //     max = Math.floor(max);
+    //     return Math.floor(Math.random() * (max - min + 1)) + min;
+    // }
+    
     var jsPsych = initJsPsych({
       on_trial_start: function(trial){
         console.log(trial)
@@ -76,6 +74,11 @@
         window.location = `https://redcap.nubic.northwestern.edu/redcap/surveys/?s=ET83PMYTR3FRPXCE&prolific_id=${subject_id}`
       }
     });
+
+    // const subject_id = "testingProlificID" + getRandomInt(10000,99999);
+    var subject_id = jsPsych.data.getURLVariable('PROLIFIC_PID')
+    const filename = `${subject_id}.csv`;
+
     timeline = [];
 
     jsPsych.data.addProperties({
