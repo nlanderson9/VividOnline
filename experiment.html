@@ -74,8 +74,7 @@
     timeline = [];
 
     jsPsych.data.addProperties({
-      subject: subject_id,
-      timestamp: (new Date).toISOString().replace(/z|t/gi,' ').trim()
+      subject: subject_id
     });
 
     var consent = {
@@ -89,6 +88,9 @@
          name: "consent_agree",
          options: ["Continue", "Withdraw"]}
       ],
+      data: {
+        timestamp: (new Date).toISOString().replace(/z|t/gi,' ').trim()
+      },
       on_finish: function(data){
         console.log(data)
         if(data.response.consent_agree == "Withdraw"){
@@ -250,7 +252,10 @@
                 <input name="vision" type="radio" id="vision_no" value="vision_no" />
                 <label for="vision_no">No</label>
               </div>
-            </fieldset>`
+            </fieldset>`,
+      data: {
+        timestamp: (new Date).toISOString().replace(/z|t/gi,' ').trim()
+      }
     };
     timeline.push(demographics);
 
@@ -280,7 +285,8 @@
          options: instructions_question2_options}
       ],
       data: {
-        instructions_num_tries: 1
+        instructions_num_tries: 1,
+        timestamp: (new Date).toISOString().replace(/z|t/gi,' ').trim()
       }
     }
     timeline.push(instructions);
@@ -296,6 +302,9 @@
          name: "instructions_quiz2",
          options: instructions_question2_options}
       ],
+      data: {
+        timestamp: (new Date).toISOString().replace(/z|t/gi,' ').trim()
+      },
       on_finish: function(data) {
         var get_data = jsPsych.data.get().last(2).values()[0]
         var prev_num_tries = get_data.instructions_num_tries
@@ -329,7 +338,10 @@
     var start_experiment = {
       type: jsPsychHtmlKeyboardResponse,
       stimulus: "<p>Correct! You are now ready to begin the experiment.<br><br>Press the <strong>X</strong> key to begin.</p>",
-      choices: ["x"]
+      choices: ["x"],
+      data: {
+        timestamp: (new Date).toISOString().replace(/z|t/gi,' ').trim()
+      }
     };
     timeline.push(start_experiment);
 
@@ -346,7 +358,8 @@
         prompt: jsPsych.timelineVariable('stimulus'),
         category: jsPsych.timelineVariable('category'),
         condition: jsPsych.timelineVariable('condition'),
-        trial_number: jsPsych.timelineVariable('trial_number')
+        trial_number: jsPsych.timelineVariable('trial_number'),
+        timestamp: (new Date).toISOString().replace(/z|t/gi,' ').trim()
       }
     };
 
@@ -414,7 +427,8 @@
         category: jsPsych.timelineVariable('category'),
         condition: jsPsych.timelineVariable('condition'),
         trial_number: jsPsych.timelineVariable('trial_number'),
-        attention_check: jsPsych.timelineVariable('attention_check')
+        attention_check: jsPsych.timelineVariable('attention_check'),
+        timestamp: (new Date).toISOString().replace(/z|t/gi,' ').trim()
       }
     };
 
@@ -443,7 +457,8 @@
         html: "",
         button_label: "Proceed to next section",
         data: {
-          task_finished: "TRUE"
+          task_finished: "TRUE",
+          timestamp: (new Date).toISOString().replace(/z|t/gi,' ').trim()
         }
       }
       timeline.push(redirect)
