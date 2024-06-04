@@ -67,6 +67,9 @@
     const filename = `${subject_id}.csv`;
 
     var jsPsych = initJsPsych({
+      data: {
+        timestamp: "placeholder"
+      },
       on_trial_start: function(trial){
         console.log(trial)
         console.log(trial.data)
@@ -80,8 +83,7 @@
     timeline = [];
 
     jsPsych.data.addProperties({
-      subject: subject_id,
-      timestamp: "placeholder"
+      subject: subject_id
     });
 
     var consent = {
