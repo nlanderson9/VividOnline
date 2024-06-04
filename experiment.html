@@ -69,8 +69,8 @@
     var jsPsych = initJsPsych({
       on_trial_start: function(trial){
         console.log(trial)
-        console.log(trial.type.data.dataProperties)
-        trial.type.data.dataProperties.timestamp = (new Date).toISOString().replace(/z|t/gi,' ').trim()
+        console.log(trial.type.jsPsych.data.dataProperties)
+        trial.type.jsPsych.data.dataProperties.timestamp = (new Date).toISOString().replace(/z|t/gi,' ').trim()
       },
       on_finish: function(){
         window.location = `https://redcap.nubic.northwestern.edu/redcap/surveys/?s=ET83PMYTR3FRPXCE&prolific_id=${subject_id}`
