@@ -67,14 +67,11 @@
     const filename = `${subject_id}.csv`;
 
     var jsPsych = initJsPsych({
-      data: {
-        timestamp: "placeholder"
-      },
       on_trial_start: function(trial){
         console.log(trial)
         console.log(trial.data)
         console.log(trial.data.timestamp)
-        trial.data.timestamp = (new Date).toISOString().replace(/z|t/gi,' ').trim()
+        trial.type.data.dataProperties.timestamp = (new Date).toISOString().replace(/z|t/gi,' ').trim()
       },
       on_finish: function(){
         window.location = `https://redcap.nubic.northwestern.edu/redcap/surveys/?s=ET83PMYTR3FRPXCE&prolific_id=${subject_id}`
