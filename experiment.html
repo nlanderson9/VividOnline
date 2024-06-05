@@ -520,6 +520,8 @@
         row.trial_number = index; // Add row number starting from 0
       });
 
+      console.log(use_stimuli)
+
       /* define test procedure */
       var test_procedure = {
         timeline: [imagine, question],
@@ -547,7 +549,7 @@
           }
         },
         on_finish: function(data) {
-          if (failed_check_count > 1) {
+          if(failed_check_count > 1) {
             data.task_finished = "FAILED_ATTENTION_CHECKS"
           } else {
             data.task_finished = "TRUE"
