@@ -59,6 +59,9 @@
     var imagine_time = 5000;
 
     var withdrawn = false;
+    var num_tries = 1;
+    var instructions_failed = false;
+    var failed_check_count = 0;
 
     // function getRandomInt(min, max) {
     //     min = Math.ceil(min);
@@ -74,9 +77,11 @@
       },
       on_finish: function(){
         if (withdrawn == true){
-          window.location = `https://app.prolific.com/submissions/complete?cc=C19T98NA`
+          window.location = `https://app.prolific.com/submissions/complete?cc=CGE75EJ0`
+        } else if (instructions_failed == true){
+          window.location = `https://app.prolific.com/`
         } else if(failed_check_count > 1) {
-          window.location = `https://app.prolific.com/submissions/complete?cc=C1OP3Q6D`
+          window.location = `https://app.prolific.com/submissions/complete?cc=CVFKQNDO`
         } else {
           window.location = `https://redcap.nubic.northwestern.edu/redcap/surveys/?s=ET83PMYTR3FRPXCE&prolific_id=${subject_id}&prolific_study_id=${prolific_study_id}&prolific_session_id=${prolific_session_id}&failed_attention_checks=${failed_check_count}`
         }
@@ -290,8 +295,6 @@
     var instructions_question3_options = ["you did not experience any mental images or sounds at all", "you think you did experience mental images or sounds, but they were dim or dull or not very clear", "you did experience mental images or sounds, and you feel that they were relatively clear or vivid", "you did experience mental images or sounds, and they were very clear and vivid, almost similar to if you were actually hearing or seeing the item in real life"]
     var instructions_question3_correct = 2 // third option (index starts at 0)
 
-    var num_tries = 1;
-
     var instructions = {
       type: jsPsychSurveyMultiChoice,
       preamble: task_instruction_text,
@@ -353,6 +356,7 @@
         html: "",
         button_label: "Return to Prolific",
         on_finish: function(data) {
+          instructions_failed = true;
           jsPsych.endExperiment();
         }
       }
@@ -449,8 +453,6 @@
     var attention_correct1 = 0;
     var attention_correct2 = 4;
     var attention_correct3 = 6;
-
-    var failed_check_count = 0;
 
     var question = {
       type: jsPsychSurveyLikert,
