@@ -366,11 +366,11 @@
       conditional_function: function() {
           var data = jsPsych.data.get().last(1).values()[0];
           console.log(data)
-          if (data.instructions_num_tries > 1) {
-            return true
-          } else {
-            return false
-          }
+          if(data.response.instructions_quiz1 == instructions_question1_options[instructions_question1_correct] & data.response.instructions_quiz2 == instructions_question2_options[instructions_question2_correct] & data.response.instructions_quiz3 == instructions_question3_options[instructions_question3_correct]){
+                return false;
+            } else {
+                return true;
+            }
         }
     }
     timeline.push(instructions_failed_conditional)
