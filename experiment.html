@@ -365,6 +365,7 @@
       timeline: [instructions_failed],
       conditional_function: function() {
           var data = jsPsych.data.get().last(1).values()[0];
+          console.log(data)
           if (data.instructions_num_tries > 1) {
             return true
           } else {
