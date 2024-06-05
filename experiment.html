@@ -526,15 +526,21 @@
         type: jsPsychSurveyHtmlForm,
         preamble: function() {
           if(failed_check_count > 1) {
-            return `<p>Unfortunately, you failed two (2) or more attention checks during the experiment.<br><br>
-          Please click below to return to Prolific.<br><br></p>`
+            return `<p><span style="color: #C80000;">Unfortunately, you failed two (2) or more attention checks during the experiment.<br><br>
+          Please click below to return to Prolific.</span><br><br></p>`
           } else {
             return `<p>Thank you! You've completed this part of the experiment.<br><br>
           Please click below to be redirected to the page with the next section of the experiment.<br><br></p>`
           }
         },
         html: "",
-        button_label: "Proceed to next section",
+        button_label: function() {
+          if(failed_check_count > 1) {
+            return `Return to Prolific`
+          } else {
+            return `Proceed to next section`
+          }
+        },
         on_finish: function(data) {
           if (failed_check_count > 1) {
             data.task_finished = "FAILED_ATTENTION_CHECKS"
