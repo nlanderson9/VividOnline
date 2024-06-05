@@ -516,6 +516,8 @@
             return row["group"] == condition;
           });
 
+      use_stimuli.forEach((object, i) => object.trial_number = i);
+
       /* define test procedure */
       var test_procedure = {
         timeline: [imagine, question],
