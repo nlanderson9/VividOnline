@@ -513,10 +513,12 @@
 
       // var use_stimuli = test_stimuli[condition]
       var use_stimuli = csv_data.filter(function(row) {
-            return row["group"] == condition;
-          });
+        return row["group"] == condition;
+      });
 
-      use_stimuli.forEach((object, i) => object.trial_number = i);
+      use_stimuli.forEach(function(row, index) {
+        row.trial_number = index; // Add row number starting from 0
+      });
 
       /* define test procedure */
       var test_procedure = {
