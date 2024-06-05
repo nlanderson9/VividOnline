@@ -6,7 +6,7 @@ Speech,Memory,Remember your parent's voice,1,0
 Speech,Imagery,Imagine reciting the alphabet,1,0
 Speech,Imagery,Imagine reciting your street address,1,0
 Face,Memory,Remember your former teacher's face,1,0
-Speech,Memory,Remember your nurse's voice,1,0
+Speech,Memory,Remember a nurse's voice,1,0
 Scene,Memory,Remember your bathroom,1,2
 Scene,Memory,Remember a local grocery store,1,0
 Face,Memory,Remember your grandparent's face,1,0
@@ -20,7 +20,7 @@ Scene,Memory,Remember a restaurant you like,1,0
 Demo,Demo,Imagine a castle on a hill,2,0
 Face,Imagery,Imagine an old person's face,2,0
 Face,Memory,Remember your face as it looked this morning,2,1
-Scene,Memory,Remember the outside of the hospital,2,0
+Scene,Memory,Remember the outside of a hospital,2,0
 Speech,Imagery,Imagine reciting the alphabet,2,0
 Face,Imagery,Imagine putting on a face mask,2,0
 Face,Memory,Remember your former teacher's face,2,0

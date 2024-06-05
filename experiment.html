@@ -74,9 +74,11 @@
       },
       on_finish: function(){
         if (withdrawn == true){
-          window.location = `https://www.prolific.com/`
+          window.location = `https://app.prolific.com/submissions/complete?cc=C19T98NA`
+        } else if(failed_check_count > 1) {
+          window.location = `https://app.prolific.com/submissions/complete?cc=C1OP3Q6D`
         } else {
-          window.location = `https://redcap.nubic.northwestern.edu/redcap/surveys/?s=ET83PMYTR3FRPXCE&prolific_id=${subject_id}`
+          window.location = `https://redcap.nubic.northwestern.edu/redcap/surveys/?s=ET83PMYTR3FRPXCE&prolific_id=${subject_id}&prolific_study_id=${prolific_study_id}&prolific_session_id=${prolific_session_id}&failed_attention_checks=${failed_check_count}`
         }
         
       }
@@ -84,6 +86,8 @@
 
     // const subject_id = "testingProlificID" + getRandomInt(10000,99999);
     var subject_id = jsPsych.data.getURLVariable('PROLIFIC_PID')
+    var prolific_study_id = jsPsych.data.getURLVariable('PROLIFIC_STUDY_ID')
+    var prolific_session_id = jsPsych.data.getURLVariable('PROLIFIC_SESSION_ID')
     const filename = `${subject_id}.csv`;
 
     timeline = [];
@@ -271,16 +275,22 @@
    
 
 
-    var task_instruction_text = `<p style="text-align: left;"><span style="font-weight: normal; text-align: left;">In this task, we're going to ask you to imagine or remember different things.<br><br>First, a short sentence will appear on the screen for you to read, for example: "Imagine a castle on a hill" or "Remember the face of your boss."<br><br><strong data-stringify-type="bold">You will then be given 5 seconds to do whatever the sentence you just read instructed you to do, before moving on.</strong><br><br>If the instruction doesn't make sense for you (for example, if you don't have a boss), just think of something similar (e.g. the face of a colleague, or a friend). You also don't have to try really hard to be completely accurate in your memory of that person or thing, we just want you to think about (imagine or remember) that person or thing, however you might normally do that. Similarly, if you are not sure what the instruction is asking you to imagine, that's ok; just answer the questions as best as you can.<br><br>Sometimes when people perform this kind of imagining, people experience mental sensations, similar to dreams. For example, if you are asked to "Imagine a red sports car", you might experience a mental visual image of a red sports car, almost as if you were "seeing" it in your mind. Similarly, if you were asked to "Imagine singing When the Saints Go Marching In", while you do this you might feel as if you are experiencing sounds, almost as if you were "hearing" the song play inside your mind. These mental sensations are perfectly normal and are the topic of this study.<br><br><strong data-stringify-type="bold">Once you have finished imagining, we will ask you a series of questions about what you thought about.</strong><br><br>The first two questions will be about the "vividness" of your thinking, for both visual images and auditory sounds. For example:<br><strong data-stringify-type="bold">"While imagining this, how vividly did you experience mental images/sounds?"</strong><br></span></p> <p><span style="font-weight: normal; text-align: left;"><ul style="text-align: left;"><li><strong data-stringify-type="bold">"Nothing"</strong> means you did not experience any mental images or sounds at all.</li><li><strong data-stringify-type="bold">"Vague"</strong> means you think you did experience mental images or sounds, but they were dim or dull or not very clear.</li><li><strong data-stringify-type="bold">"Moderate"</strong> means you did experience mental images or sounds, and you feel that they were relatively clear or vivid.</li><li><strong data-stringify-type="bold">"Vivid"</strong> means you did experience mental images or sounds, and they were very clear and vivid, almost similar to if you were actually hearing or seeing the item in real life.</li></ul></p><p style="text-align: left;"></span><br><span style="font-weight: normal; text-align: left;">The remaining questions will ask you to agree or disagree with statements, based on how much you believe they apply to your imagining of that sentence (for example, after imagining a motorcycle, you might agree or disagree that you "envisioned the location of objects, people, or places").<br><br>It's important to remember that there is no correct or incorrect answer to any of the questions. We just want you to tell us as honestly as you can what you experienced during the thinking period.<br><br><strong data-stringify-type="bold">There will be approximately 25 sentences to imagine or remember, and then answer questions about.</strong><br><br>Please answer the questions below, and then you can begin the task.<br><br></span></p>`
-    var task_instructions_fail_text = `<p><span style="font-weight: normal; text-align: left;"><span style="font-size: 150; color: #C80000;"><strong data-stringify-type="bold">Sorry, not all of your answers were correct.<br>Please re-read the instructions below and try the questions again to continue.</strong></span></span></p>`
+    var task_instruction_text = `<p style="text-align: left;"><span style="font-weight: normal; text-align: left;">In this task, we're going to ask you to imagine or remember different things.<br><br>First, a short sentence will appear on the screen for you to read, for example: "Imagine a castle on a hill" or "Remember the face of your boss."<br><br><strong data-stringify-type="bold">You will then be given 5 seconds to do whatever the sentence you just read instructed you to do, before moving on.</strong> Please keep your eyes open while you are thinking about the sentence.<br><br>If the instruction doesn't make sense for you (for example, if you don't have a boss), just think of something similar (e.g. the face of a colleague, or a friend). You also don't have to try really hard to be completely accurate in your memory of that person or thing, we just want you to think about (imagine or remember) that person or thing, however you might normally do that. Similarly, if you are not sure what the instruction is asking you to imagine, that's ok; just answer the questions as best as you can.<br><br>Sometimes when people perform this kind of imagining, people experience mental sensations, similar to dreams. For example, if you are asked to "Imagine a red sports car", you might experience a mental visual image of a red sports car, almost as if you were "seeing" it in your mind. Similarly, if you were asked to "Imagine singing When the Saints Go Marching In", while you do this you might feel as if you are experiencing sounds, almost as if you were "hearing" the song play inside your mind. These mental sensations are perfectly normal and are the topic of this study.<br><br><strong data-stringify-type="bold">Once you have finished imagining, we will ask you a series of questions about what you thought about.</strong><br><br>The first two questions will be about the "vividness" of your thinking, for both visual images and auditory sounds. For example:<br><strong data-stringify-type="bold">"While imagining this, how vividly did you experience mental images/sounds?"</strong><br></span></p> <p><span style="font-weight: normal; text-align: left;"><ul style="text-align: left;"><li><strong data-stringify-type="bold">"Nothing"</strong> means you did not experience any mental images or sounds at all.</li><li><strong data-stringify-type="bold">"Vague"</strong> means you think you did experience mental images or sounds, but they were dim or dull or not very clear.</li><li><strong data-stringify-type="bold">"Moderate"</strong> means you did experience mental images or sounds, and you feel that they were relatively clear or vivid.</li><li><strong data-stringify-type="bold">"Vivid"</strong> means you did experience mental images or sounds, and they were very clear and vivid, almost similar to if you were actually hearing or seeing the item in real life.</li></ul></p><p style="text-align: left;"></span><br><span style="font-weight: normal; text-align: left;">The remaining questions will ask you to agree or disagree with statements, based on how much you believe they apply to your imagining of that sentence (for example, after imagining a motorcycle, you might agree or disagree that you "envisioned the location of objects, people, or places").<br><br>It's important to remember that there is no correct or incorrect answer to any of the questions. We just want you to tell us as honestly as you can what you experienced during the thinking period.<br><br><strong data-stringify-type="bold">There will be approximately 25 sentences to imagine or remember, and then answer questions about.</strong><br><br>Please answer the questions below, and then you can begin the task.<br><br></span><span style="font-size: 150; color: #000C8;">Please re-read the instructions above if you are not sure of an answer. You will have two opportunities to get these questions correct.</span><br><br></p>`
+    var task_instructions_fail_text = `<p><span style="font-weight: normal; text-align: left;"><span style="font-size: 150; color: #C80000;"><strong data-stringify-type="bold">Sorry, not all of your answers were correct.<br>Please carefully re-read the instructions below and try the questions again to continue.<br>You will only have one more attempt to successfully answer these questions.</strong></span></span></p>`
     
-    var instructions_question1_text = `<strong>Before answering the questions, you will spend _____ seconds thinking about what the sentence instructs</strong>`
-    var instructions_question2_text = `<strong>When rating the vividness of mental images and sounds, the rating of "Moderate" means:</strong>`
+    var instructions_question1_text = `<strong>When thinking about the sentence, your eyes should be:</strong>`
+    var instructions_question2_text = `<strong>Before answering the questions, you will spend _____ seconds thinking about what the sentence instructs</strong>`
+    var instructions_question3_text = `<strong>When rating the vividness of mental images and sounds, the rating of "Moderate" means:</strong>`
 
-    instructions_question1_options = ["2", "5", "15", "30"]
-    instructions_question1_correct = 1 // Second option (index starts at 0)
-    instructions_question2_options = ["you did not experience any mental images or sounds at all", "you think you did experience mental images or sounds, but they were dim or dull or not very clear", "you did experience mental images or sounds, and you feel that they were relatively clear or vivid", "you did experience mental images or sounds, and they were very clear and vivid, almost similar to if you were actually hearing or seeing the item in real life"]
-    instructions_question2_correct = 2 // third option (index starts at 0)
+
+    var instructions_question1_options = ["Open", "Closed", "Open or close, it doesn't matter"]
+    var instructions_question1_correct = 0 // First option (index starts at 0)
+    var instructions_question2_options = ["2", "5", "15", "30"]
+    var instructions_question2_correct = 1 // Second option (index starts at 0)
+    var instructions_question3_options = ["you did not experience any mental images or sounds at all", "you think you did experience mental images or sounds, but they were dim or dull or not very clear", "you did experience mental images or sounds, and you feel that they were relatively clear or vivid", "you did experience mental images or sounds, and they were very clear and vivid, almost similar to if you were actually hearing or seeing the item in real life"]
+    var instructions_question3_correct = 2 // third option (index starts at 0)
+
+    var num_tries = 1;
 
     var instructions = {
       type: jsPsychSurveyMultiChoice,
@@ -291,15 +301,18 @@
          options: instructions_question1_options},
         {prompt: instructions_question2_text,
          name: "instructions_quiz2",
-         options: instructions_question2_options}
+         options: instructions_question2_options},
+         {prompt: instructions_question3_text,
+         name: "instructions_quiz3",
+         options: instructions_question3_options}
       ],
       data: {
-        instructions_num_tries: 1
+        instructions_num_tries: num_tries
       }
     }
     timeline.push(instructions);
 
-    var loop_trial = {
+    var instructions_reattempt = {
       type: jsPsychSurveyMultiChoice,
       preamble: task_instructions_fail_text + task_instruction_text,
       questions: [
@@ -308,37 +321,77 @@
          options: instructions_question1_options},
         {prompt: instructions_question2_text,
          name: "instructions_quiz2",
-         options: instructions_question2_options}
+         options: instructions_question2_options},
+         {prompt: instructions_question3_text,
+         name: "instructions_quiz3",
+         options: instructions_question3_options}
       ],
       on_finish: function(data) {
-        var get_data = jsPsych.data.get().last(2).values()[0]
-        var prev_num_tries = get_data.instructions_num_tries
-        data.instructions_num_tries = prev_num_tries + 1;
+        num_tries += 1
+        data.instructions_num_tries = num_tries;
       }
     }
 
-    var loop_node = {
-        timeline: [loop_trial],
-        conditional_function: function() {
+    var instructions_reattempt_conditional = {
+      timeline: [instructions_reattempt],
+      conditional_function: function() {
           var data = jsPsych.data.get().last(1).values()[0];
           console.log(data)
-          if(data.response.instructions_quiz1 == instructions_question1_options[instructions_question1_correct] & data.response.instructions_quiz2 == instructions_question2_options[instructions_question2_correct]){
-                return false;
-            } else {
-                return true;
-            }
-        },
-        loop_function: function(data){
-          this_data = data.trials[0]
-          console.log(this_data)
-            if(this_data.response.instructions_quiz1 == instructions_question1_options[instructions_question1_correct] & this_data.response.instructions_quiz2 == instructions_question2_options[instructions_question2_correct]){
+          if(data.response.instructions_quiz1 == instructions_question1_options[instructions_question1_correct] & data.response.instructions_quiz2 == instructions_question2_options[instructions_question2_correct] & data.response.instructions_quiz3 == instructions_question3_options[instructions_question3_correct]){
                 return false;
             } else {
                 return true;
             }
         }
     }
-    timeline.push(loop_node);
+    timeline.push(instructions_reattempt_conditional)
+
+    var instructions_failed = {
+        type: jsPsychSurveyHtmlForm,
+        preamble: `<p>Unfortunately, you answered one or more questions incorrectly after two attempts.<br><br>
+          Please click below to return to Prolific and return your study submission..<br><br></p>`,
+        html: "",
+        button_label: "Return to Prolific",
+        on_finish: function(data) {
+          jsPsych.endExperiment();
+        }
+      }
+
+    var instructions_failed_conditional = {
+      timeline: [instructions_failed],
+      conditional_function: function() {
+          var data = jsPsych.data.get().last(1).values()[0];
+          if (data.instructions_num_tries > 1) {
+            return true
+          } else {
+            return false
+          }
+        }
+    }
+    timeline.push(instructions_failed_conditional)
+
+    // var loop_node = {
+    //     timeline: [loop_trial],
+    //     conditional_function: function() {
+    //       var data = jsPsych.data.get().last(1).values()[0];
+    //       console.log(data)
+    //       if(data.response.instructions_quiz1 == instructions_question1_options[instructions_question1_correct] & data.response.instructions_quiz2 == instructions_question2_options[instructions_question2_correct] & data.response.instructions_quiz3 == instructions_question3_options[instructions_question3_correct]){
+    //             return false;
+    //         } else {
+    //             return true;
+    //         }
+    //     },
+    //     loop_function: function(data){
+    //       this_data = data.trials[0]
+    //       console.log(this_data)
+    //         if(this_data.response.instructions_quiz1 == instructions_question1_options[instructions_question1_correct] & this_data.response.instructions_quiz2 == instructions_question2_options[instructions_question2_correct] & this_data.response.instructions_quiz3 == instructions_question3_options[instructions_question3_correct]){
+    //             return false;
+    //         } else {
+    //             return true;
+    //         }
+    //     }
+    // }
+    // timeline.push(loop_node);
 
     var start_experiment = {
       type: jsPsychHtmlKeyboardResponse,
@@ -393,6 +446,11 @@
     var attention_questions2 = {prompt: "As an attention check, please select 'Neutral'", name: "attention_check2", labels: probe_labels, required: req};
     var attention_questions3 = {prompt: "As an attention check, please select 'Agree'", name: "attention_check3", labels: probe_labels, required: req};
 
+    var attention_correct1 = 0;
+    var attention_correct2 = 4;
+    var attention_correct3 = 6;
+
+    var failed_check_count = 0;
 
     var question = {
       type: jsPsychSurveyLikert,
@@ -429,6 +487,15 @@
         condition: jsPsych.timelineVariable('condition'),
         trial_number: jsPsych.timelineVariable('trial_number'),
         attention_check: jsPsych.timelineVariable('attention_check')
+      },
+      on_finish: function(data) {
+        if (data.attention_check == 1 & data.response.attention_check1 != attention_correct1) {
+          failed_check_count += 1
+        } else if (data.attention_check == 2 & data.response.attention_check2 != attention_correct2) {
+          failed_check_count += 1
+        } else if (data.attention_check == 3 & data.response.attention_check3 != attention_correct3) {
+          failed_check_count += 1
+        }
       }
     };
 
@@ -455,12 +522,23 @@
 
       var redirect = {
         type: jsPsychSurveyHtmlForm,
-        preamble: `<p>Thank you! You've completed this part of the experiment.<br><br>
-          Please click below to be redirected to the page with the next section of the experiment.<br><br></p>`,
+        preamble: function() {
+          if(failed_check_count > 1) {
+            return `<p>Unfortunately, you failed two (2) or more attention checks during the experiment.<br><br>
+          Please click below to return to Prolific.<br><br></p>`
+          } else {
+            return `<p>Thank you! You've completed this part of the experiment.<br><br>
+          Please click below to be redirected to the page with the next section of the experiment.<br><br></p>`
+          }
+        },
         html: "",
         button_label: "Proceed to next section",
-        data: {
-          task_finished: "TRUE"
+        on_finish: function(data) {
+          if (failed_check_count > 1) {
+            data.task_finished = "FAILED_ATTENTION_CHECKS"
+          } else {
+            data.task_finished = "TRUE"
+          }
         }
       }
       timeline.push(redirect)
