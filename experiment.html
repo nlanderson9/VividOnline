@@ -81,10 +81,12 @@
       questions: [
         {prompt: `<div class="rich-text-field-label" style="background-color:white;"><p><span style="font-weight: normal;"><strong data-stringify-type="bold">Optional Elements:</strong><br /><br />The following research activities are optional, meaning that you do not have to agree to them in order to participate in the research study. Please indicate your willingness to participate in these optional activities by checking the box to either 'Opt-In' or 'Opt-Out' to being contacted by the study team about future studies.<br /><br /></span></p></div>`,
          name: "future_studies",
-         options: ["Opt-In", "Opt-Out"]},
+         options: ["Opt-In", "Opt-Out"],
+         required: req},
         {prompt: `<div class="rich-text-field-label" style="background-color:white;"><p><span style="font-weight: normal;"><strong data-stringify-type="bold">Agreement:</strong><br /><br />By clicking 'Continue' below, I acknowledge that the nature and purpose of this research have been sufficiently explained and I agree to participate in this study. I understand that I am free to withdraw at any time without incurring any penalty.<br /><br /></span></p></div>`,
          name: "consent_agree",
-         options: ["Continue", "Withdraw"]}
+         options: ["Continue", "Withdraw"],
+         required: req}
       ],
       on_finish: function(data){
         if(data.response.consent_agree == "Withdraw"){
@@ -104,7 +106,7 @@
             <fieldset style="text-align: left;">
               <legend><strong>Age</strong></legend>
               <div>
-                <input name="age" type="number" min="1" max="110" />
+                <input name="age" type="number" min="1" max="110" required />
               </div>
             </fieldset>
             <br>
@@ -113,7 +115,7 @@
             <fieldset style="text-align: left;">
               <legend><strong>Gender</strong></legend>
               <div>
-                <input name="gender" type="radio" id="male" value="male" />
+                <input name="gender" type="radio" id="male" value="male" required />
                 <label for="male">Male</label>
               </div>
               <div>
@@ -135,7 +137,7 @@
             <fieldset style="text-align: left;">
               <legend><strong>Ethnicity</strong></legend>
               <div>
-                <input name="ethnicity" type="radio" id="hispanic" value="hispanic" />
+                <input name="ethnicity" type="radio" id="hispanic" value="hispanic" required />
                 <label for="hispanic">Hispanic</label>
               </div>
               <div>
@@ -149,7 +151,7 @@
             <fieldset style="text-align: left;">
               <legend><strong>Race</strong></legend>
               <div>
-                <input name="race" type="radio" id="american_indian_alaska_native_indigenous" value="american_indian_alaska_native_indigenous" />
+                <input name="race" type="radio" id="american_indian_alaska_native_indigenous" value="american_indian_alaska_native_indigenous" required />
                 <label for="american_indian_alaska_native_indigenous">American Indian/Alaska Native/Indigenous</label>
               </div>
               <div>
@@ -179,7 +181,7 @@
             <fieldset style="text-align: left;">
               <legend><strong>Highest level of education</strong></legend>
               <div>
-                <input name="education" type="radio" id="junior_high" value="junior_high" />
+                <input name="education" type="radio" id="junior_high" value="junior_high" required />
                 <label for="junior_high">Junior High</label>
               </div>
               <div>
@@ -214,7 +216,7 @@
               <legend><strong>First Language</strong></legend>
                 Was English your first language?
               <div>
-                <input name="native_english" type="radio" id="english_yes" value="english_yes" />
+                <input name="native_english" type="radio" id="english_yes" value="english_yes" required />
                 <label for="english_yes">Yes</label>
               </div>
               <div>
@@ -239,7 +241,7 @@
               <legend><strong>Vision</strong></legend>
               Do you have normal, or corrected-to-normal, vision?
               <div>
-                <input name="vision" type="radio" id="vision_yes" value="vision_yes" />
+                <input name="vision" type="radio" id="vision_yes" value="vision_yes" required />
                 <label for="vision_yes">Yes</label>
               </div>
               <div>
@@ -273,13 +275,16 @@
       questions: [
         {prompt: instructions_question1_text,
          name: "instructions_quiz1",
-         options: instructions_question1_options},
+         options: instructions_question1_options,
+        required: req},
         {prompt: instructions_question2_text,
          name: "instructions_quiz2",
-         options: instructions_question2_options},
+         options: instructions_question2_options,
+        required: req},
          {prompt: instructions_question3_text,
          name: "instructions_quiz3",
-         options: instructions_question3_options}
+         options: instructions_question3_options,
+        required: req}
       ],
       data: {
         instructions_num_tries: num_tries
@@ -294,13 +299,16 @@
       questions: [
         {prompt: instructions_question1_text,
          name: "instructions_quiz1",
-         options: instructions_question1_options},
+         options: instructions_question1_options,
+        required: req},
         {prompt: instructions_question2_text,
          name: "instructions_quiz2",
-         options: instructions_question2_options},
+         options: instructions_question2_options,
+        required: req},
          {prompt: instructions_question3_text,
          name: "instructions_quiz3",
-         options: instructions_question3_options}
+         options: instructions_question3_options,
+        required: req}
       ],
       on_finish: function(data) {
         num_tries += 1
