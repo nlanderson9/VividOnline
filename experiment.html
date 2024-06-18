@@ -460,6 +460,7 @@
 
       // Query jsPsych DataPipe to get condition assignment for this subject
       const condition = await jsPsychPipe.getCondition("zM4MjmVtRXlb");
+      console.log(condition)
 
       jsPsych.data.addProperties({
         condition: condition
