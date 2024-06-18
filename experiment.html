@@ -459,8 +459,8 @@
     async function createExperiment(){
 
       // Query jsPsych DataPipe to get condition assignment for this subject
-      const condition = await jsPsychPipe.getCondition("zM4MjmVtRXlb");
-      console.log(condition)
+      //const condition = await jsPsychPipe.getCondition("zM4MjmVtRXlb");
+      const condition = 0
 
       jsPsych.data.addProperties({
         condition: condition

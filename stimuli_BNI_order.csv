@@ -89,21 +89,21 @@ Speech,Memory,Remember a famous celebrity's voice,5,0
 Scene,Imagery,Imagine a nature trail in the summer,5,3
 Speech,Memory,Remember the current president's voice,5,0
 Speech,Memory,Remember a researcher's voice,5,0
-Demo,Demo,Imagine a castle on a hill,6,0
-Face,Imagery,Imagine an old person's face,6,0
-Scene,Memory,Remember your high school,6,1
-Face,Memory,Remember your face when you were younger,6,0
-Speech,Imagery,Imagine reciting the alphabet,6,0
-Scene,Imagery,Imagine a college campus,6,0
-Face,Memory,Remember your former teacher's face,6,0
-Face,Imagery,Imagine drawing a face with a pencil,6,0
-Scene,Imagery,Imagine visiting a new museum,6,2
-Scene,Memory,Remember a local grocery store,6,0
-Speech,Memory,Remember your cousin's voice,6,0
-Scene,Memory,Remember your current neighborhood,6,0
-Scene,Imagery,Imagine a mountain range,6,0
-Face,Memory,Remember the president's face,6,0
-Speech,Imagery,Imagine reciting the months of the year,6,0
-Face,Imagery,Imagine a baby's face,6,3
-Speech,Memory,Remember the current president's voice,6,0
-Speech,Memory,Remember your doctor's voice,6,0
+Demo,Demo,Imagine a castle on a hill,0,0
+Face,Imagery,Imagine an old person's face,0,0
+Scene,Memory,Remember your high school,0,1
+Face,Memory,Remember your face when you were younger,0,0
+Speech,Imagery,Imagine reciting the alphabet,0,0
+Scene,Imagery,Imagine a college campus,0,0
+Face,Memory,Remember your former teacher's face,0,0
+Face,Imagery,Imagine drawing a face with a pencil,0,0
+Scene,Imagery,Imagine visiting a new museum,0,2
+Scene,Memory,Remember a local grocery store,0,0
+Speech,Memory,Remember your cousin's voice,0,0
+Scene,Memory,Remember your current neighborhood,0,0
+Scene,Imagery,Imagine a mountain range,0,0
+Face,Memory,Remember the president's face,0,0
+Speech,Imagery,Imagine reciting the months of the year,0,0
+Face,Imagery,Imagine a baby's face,0,3
+Speech,Memory,Remember the current president's voice,0,0
+Speech,Memory,Remember your doctor's voice,0,0
